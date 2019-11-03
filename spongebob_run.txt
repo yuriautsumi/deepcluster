@@ -1,0 +1,399 @@
+Architecture: alexnet
+Load dataset: 0.20 s
+Compute features
+0 / 265	Time: 5.489 (5.489)
+200 / 265	Time: 0.106 (0.211)
+Cluster the features
+k-means loss evolution: [91475.    52335.62  49588.402 48704.434 48079.074 47726.953 47395.33
+ 47187.113 47123.51  47068.8   47041.52  47013.527 46975.38  46949.293
+ 46930.02  46908.57  46892.957 46879.01  46855.01  46845.754]
+k-means time: 59 s
+Assign pseudo labels
+Save checkpoint at: ./spongebob_results/checkpoints/checkpoint_0.0.pth.tar
+Epoch: [0][0/265]	Time: 6.669 (6.669)	Data: 3.213 (3.213)	Loss: 5.4294 (5.4294)
+Epoch: [0][200/265]	Time: 0.176 (0.196)	Data: 0.000 (0.020)	Loss: 3.8637 (4.5035)
+###### Epoch [0] ###### 
+Time: 51.053 s
+Clustering loss: 46845.754 
+ConvNet loss: 4.328
+####################### 
+
+Compute features
+0 / 265	Time: 3.837 (3.837)
+200 / 265	Time: 0.072 (0.212)
+Cluster the features
+k-means loss evolution: [79322.06  45812.758 43422.812 42575.7   42153.023 41859.96  41645.785
+ 41548.59  41477.61  41440.094 41399.51  41349.36  41300.883 41286.793
+ 41272.504 41248.62  41240.234 41232.324 41222.023 41210.766]
+k-means time: 48 s
+Assign pseudo labels
+Epoch: [1][0/265]	Time: 3.033 (3.033)	Data: 2.988 (2.988)	Loss: 5.3841 (5.3841)
+Epoch: [1][200/265]	Time: 0.158 (0.183)	Data: 0.000 (0.029)	Loss: 2.3266 (3.1481)
+###### Epoch [1] ###### 
+Time: 47.880 s
+Clustering loss: 41210.766 
+ConvNet loss: 2.979
+NMI against previous assignment: 0.698
+####################### 
+
+Compute features
+0 / 265	Time: 3.854 (3.854)
+200 / 265	Time: 0.071 (0.208)
+Cluster the features
+k-means loss evolution: [77993.03  44535.027 42082.742 41259.582 40772.67  40527.203 40324.844
+ 40217.836 40136.234 40104.75  40076.83  40049.297 40032.68  40018.023
+ 40011.97  40000.977 39993.83  39989.766 39983.656 39982.875]
+k-means time: 46 s
+Assign pseudo labels
+Epoch: [2][0/265]	Time: 3.495 (3.495)	Data: 3.453 (3.453)	Loss: 5.4560 (5.4560)
+Epoch: [2][200/265]	Time: 0.137 (0.187)	Data: 0.000 (0.034)	Loss: 1.7249 (2.3357)
+###### Epoch [2] ###### 
+Time: 48.194 s
+Clustering loss: 39982.875 
+ConvNet loss: 2.185
+NMI against previous assignment: 0.765
+####################### 
+
+Compute features
+0 / 265	Time: 3.919 (3.919)
+200 / 265	Time: 0.071 (0.221)
+Cluster the features
+k-means loss evolution: [78573.13  45028.195 41919.2   40847.516 40332.03  39973.47  39704.816
+ 39438.344 39211.113 39136.14  39079.062 39049.918 39028.754 39005.31
+ 38983.473 38946.098 38925.086 38910.78  38896.18  38888.43 ]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [3][0/265]	Time: 3.692 (3.692)	Data: 3.652 (3.652)	Loss: 5.5387 (5.5387)
+Epoch: [3][200/265]	Time: 0.132 (0.191)	Data: 0.000 (0.038)	Loss: 1.5623 (1.8086)
+###### Epoch [3] ###### 
+Time: 49.620 s
+Clustering loss: 38888.430 
+ConvNet loss: 1.686
+NMI against previous assignment: 0.801
+####################### 
+
+Compute features
+0 / 265	Time: 3.899 (3.899)
+200 / 265	Time: 0.072 (0.210)
+Cluster the features
+k-means loss evolution: [77454.79  43730.05  41131.594 40206.965 39743.2   39529.227 39404.625
+ 39339.406 39279.793 39202.29  39125.05  39054.676 39025.207 39009.883
+ 39002.742 38988.11  38968.46  38937.363 38933.082 38930.812]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [4][0/265]	Time: 3.172 (3.172)	Data: 3.131 (3.131)	Loss: 5.6578 (5.6578)
+Epoch: [4][200/265]	Time: 0.125 (0.184)	Data: 0.000 (0.030)	Loss: 1.2519 (1.6886)
+###### Epoch [4] ###### 
+Time: 47.504 s
+Clustering loss: 38930.812 
+ConvNet loss: 1.559
+NMI against previous assignment: 0.814
+####################### 
+
+Compute features
+0 / 265	Time: 3.707 (3.707)
+200 / 265	Time: 0.072 (0.210)
+Cluster the features
+k-means loss evolution: [77190.26  43712.953 40578.63  39504.082 38892.1   38540.17  38388.062
+ 38228.76  38011.824 37922.1   37868.625 37846.875 37838.69  37833.797
+ 37830.188 37828.297 37818.984 37791.805 37743.977 37735.977]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [5][0/265]	Time: 2.258 (2.258)	Data: 2.218 (2.218)	Loss: 5.6267 (5.6267)
+Epoch: [5][200/265]	Time: 0.159 (0.182)	Data: 0.000 (0.025)	Loss: 1.0016 (1.3487)
+###### Epoch [5] ###### 
+Time: 47.369 s
+Clustering loss: 37735.977 
+ConvNet loss: 1.254
+NMI against previous assignment: 0.819
+####################### 
+
+Compute features
+0 / 265	Time: 3.785 (3.785)
+200 / 265	Time: 0.071 (0.206)
+Cluster the features
+k-means loss evolution: [77973.22  43643.203 40568.727 39264.46  38589.312 38214.13  37986.816
+ 37771.04  37640.97  37569.676 37539.16  37502.695 37466.84  37425.758
+ 37414.312 37391.99  37364.824 37325.77  37314.133 37308.984]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [6][0/265]	Time: 2.247 (2.247)	Data: 2.199 (2.199)	Loss: 5.7108 (5.7108)
+Epoch: [6][200/265]	Time: 0.178 (0.184)	Data: 0.000 (0.028)	Loss: 0.9208 (1.2644)
+###### Epoch [6] ###### 
+Time: 47.535 s
+Clustering loss: 37308.984 
+ConvNet loss: 1.177
+NMI against previous assignment: 0.830
+####################### 
+
+Compute features
+0 / 265	Time: 3.797 (3.797)
+200 / 265	Time: 0.097 (0.211)
+Cluster the features
+k-means loss evolution: [75805.01  43151.375 40294.28  39253.55  38836.098 38626.457 38480.16
+ 38378.05  38298.977 38235.406 38175.    38144.848 38128.645 38094.723
+ 38068.883 38015.28  37982.52  37971.582 37966.19  37942.273]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [7][0/265]	Time: 2.242 (2.242)	Data: 2.203 (2.203)	Loss: 5.6202 (5.6202)
+Epoch: [7][200/265]	Time: 0.251 (0.183)	Data: 0.223 (0.033)	Loss: 0.9581 (1.1975)
+###### Epoch [7] ###### 
+Time: 47.704 s
+Clustering loss: 37942.273 
+ConvNet loss: 1.113
+NMI against previous assignment: 0.826
+####################### 
+
+Compute features
+0 / 265	Time: 3.794 (3.794)
+200 / 265	Time: 0.072 (0.207)
+Cluster the features
+k-means loss evolution: [76495.39  42911.92  39649.207 38579.77  38075.08  37880.227 37706.1
+ 37452.24  37290.645 37216.246 37142.87  37059.508 37013.258 36996.96
+ 36972.875 36966.812 36957.52  36947.785 36946.67  36946.133]
+k-means time: 46 s
+Assign pseudo labels
+Epoch: [8][0/265]	Time: 3.159 (3.159)	Data: 3.118 (3.118)	Loss: 5.7585 (5.7585)
+Epoch: [8][200/265]	Time: 0.124 (0.183)	Data: 0.000 (0.028)	Loss: 0.8162 (1.0895)
+###### Epoch [8] ###### 
+Time: 47.386 s
+Clustering loss: 36946.133 
+ConvNet loss: 1.015
+NMI against previous assignment: 0.832
+####################### 
+
+Compute features
+0 / 265	Time: 2.605 (2.605)
+200 / 265	Time: 0.072 (0.208)
+Cluster the features
+k-means loss evolution: [74983.84  42693.996 39697.223 38609.96  38033.996 37608.113 37382.887
+ 37277.51  37225.53  37196.95  37168.566 37112.105 37072.996 37031.992
+ 36938.676 36862.574 36824.16  36792.855 36784.918 36772.145]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [9][0/265]	Time: 2.442 (2.442)	Data: 2.402 (2.402)	Loss: 5.8881 (5.8881)
+Epoch: [9][200/265]	Time: 0.159 (0.181)	Data: 0.000 (0.026)	Loss: 0.6894 (1.0230)
+###### Epoch [9] ###### 
+Time: 47.383 s
+Clustering loss: 36772.145 
+ConvNet loss: 0.941
+NMI against previous assignment: 0.844
+####################### 
+
+Compute features
+0 / 265	Time: 2.604 (2.604)
+200 / 265	Time: 0.096 (0.209)
+Cluster the features
+k-means loss evolution: [73992.46  41403.83  38797.45  37885.42  37322.96  37029.49  36856.28
+ 36719.816 36661.758 36627.39  36605.17  36556.613 36512.727 36468.277
+ 36402.215 36391.375 36364.367 36360.176 36348.406 36334.68 ]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [10][0/265]	Time: 3.133 (3.133)	Data: 3.094 (3.094)	Loss: 5.9202 (5.9202)
+Epoch: [10][200/265]	Time: 0.156 (0.185)	Data: 0.000 (0.034)	Loss: 0.8056 (1.0157)
+###### Epoch [10] ###### 
+Time: 47.773 s
+Clustering loss: 36334.680 
+ConvNet loss: 0.939
+NMI against previous assignment: 0.849
+####################### 
+
+Compute features
+0 / 265	Time: 2.770 (2.770)
+200 / 265	Time: 0.098 (0.209)
+Cluster the features
+k-means loss evolution: [75608.67  42199.51  38747.82  37336.562 36852.625 36656.305 36531.43
+ 36393.832 36302.473 36261.605 36210.777 36125.85  36067.066 36048.91
+ 36006.34  35973.797 35963.773 35956.527 35943.918 35910.504]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [11][0/265]	Time: 2.439 (2.439)	Data: 2.400 (2.400)	Loss: 5.8166 (5.8166)
+Epoch: [11][200/265]	Time: 0.157 (0.183)	Data: 0.000 (0.032)	Loss: 0.7501 (0.9158)
+###### Epoch [11] ###### 
+Time: 47.483 s
+Clustering loss: 35910.504 
+ConvNet loss: 0.848
+NMI against previous assignment: 0.848
+####################### 
+
+Compute features
+0 / 265	Time: 4.098 (4.098)
+200 / 265	Time: 0.071 (0.210)
+Cluster the features
+k-means loss evolution: [75735.76  41612.977 38759.727 37936.38  37534.69  37267.82  37090.5
+ 37016.69  36974.72  36938.33  36907.93  36888.58  36876.637 36872.676
+ 36865.332 36849.324 36830.4   36823.617 36812.25  36799.945]
+k-means time: 48 s
+Assign pseudo labels
+Epoch: [12][0/265]	Time: 3.640 (3.640)	Data: 3.600 (3.600)	Loss: 6.0988 (6.0988)
+Epoch: [12][200/265]	Time: 0.158 (0.183)	Data: 0.000 (0.028)	Loss: 0.6396 (0.9489)
+###### Epoch [12] ###### 
+Time: 47.767 s
+Clustering loss: 36799.945 
+ConvNet loss: 0.877
+NMI against previous assignment: 0.843
+####################### 
+
+Compute features
+0 / 265	Time: 3.914 (3.914)
+200 / 265	Time: 1.316 (0.209)
+Cluster the features
+k-means loss evolution: [73962.83  41965.242 38834.086 37741.996 37164.62  36784.984 36528.445
+ 36374.44  36239.625 36163.92  36108.812 36019.66  35989.953 35962.06
+ 35945.797 35938.273 35932.17  35921.066 35900.812 35898.1  ]
+k-means time: 46 s
+Assign pseudo labels
+Epoch: [13][0/265]	Time: 2.424 (2.424)	Data: 2.393 (2.393)	Loss: 6.0355 (6.0355)
+Epoch: [13][200/265]	Time: 0.160 (0.183)	Data: 0.000 (0.029)	Loss: 0.4924 (0.8862)
+###### Epoch [13] ###### 
+Time: 47.272 s
+Clustering loss: 35898.102 
+ConvNet loss: 0.815
+NMI against previous assignment: 0.839
+####################### 
+
+Compute features
+0 / 265	Time: 3.811 (3.811)
+200 / 265	Time: 0.071 (0.210)
+Cluster the features
+k-means loss evolution: [75735.85  42378.258 39179.418 37978.98  37546.02  37373.24  37240.566
+ 37125.25  36988.06  36913.867 36892.38  36878.668 36850.88  36841.746
+ 36839.03  36838.24  36837.188 36836.176 36835.082 36834.945]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [14][0/265]	Time: 2.339 (2.339)	Data: 2.299 (2.299)	Loss: 5.9898 (5.9898)
+Epoch: [14][200/265]	Time: 0.158 (0.181)	Data: 0.000 (0.026)	Loss: 0.5181 (0.8642)
+###### Epoch [14] ###### 
+Time: 47.463 s
+Clustering loss: 36834.945 
+ConvNet loss: 0.801
+NMI against previous assignment: 0.840
+####################### 
+
+Compute features
+0 / 265	Time: 3.853 (3.853)
+200 / 265	Time: 0.092 (0.205)
+Cluster the features
+k-means loss evolution: [74570.23  41916.582 38891.582 38035.055 37595.1   37363.03  37186.473
+ 37033.17  36952.34  36863.883 36745.19  36685.336 36604.52  36553.07
+ 36435.32  36365.42  36314.637 36264.48  36228.348 36226.656]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [15][0/265]	Time: 3.546 (3.546)	Data: 3.510 (3.510)	Loss: 6.0606 (6.0606)
+Epoch: [15][200/265]	Time: 0.158 (0.185)	Data: 0.000 (0.031)	Loss: 0.4667 (0.8501)
+###### Epoch [15] ###### 
+Time: 47.598 s
+Clustering loss: 36226.656 
+ConvNet loss: 0.777
+NMI against previous assignment: 0.834
+####################### 
+
+Compute features
+0 / 265	Time: 2.751 (2.751)
+200 / 265	Time: 0.074 (0.213)
+Cluster the features
+k-means loss evolution: [73104.625 41468.273 38285.15  37354.324 36967.273 36815.992 36695.33
+ 36605.438 36532.06  36465.76  36408.906 36373.023 36360.875 36353.547
+ 36350.45  36340.4   36335.598 36334.754 36333.008 36330.285]
+k-means time: 46 s
+Assign pseudo labels
+Epoch: [16][0/265]	Time: 2.238 (2.238)	Data: 2.196 (2.196)	Loss: 5.8154 (5.8154)
+Epoch: [16][200/265]	Time: 0.157 (0.183)	Data: 0.000 (0.030)	Loss: 0.5966 (0.8177)
+###### Epoch [16] ###### 
+Time: 47.084 s
+Clustering loss: 36330.285 
+ConvNet loss: 0.748
+NMI against previous assignment: 0.840
+####################### 
+
+Compute features
+0 / 265	Time: 3.318 (3.318)
+200 / 265	Time: 0.099 (0.213)
+Cluster the features
+k-means loss evolution: [73958.93  41446.984 37833.105 37082.79  36752.586 36574.004 36476.84
+ 36354.926 36281.973 36228.45  36169.926 36095.797 36036.18  36021.96
+ 35990.83  35965.605 35928.33  35899.754 35888.117 35883.957]
+k-means time: 47 s
+Assign pseudo labels
+Epoch: [17][0/265]	Time: 3.389 (3.389)	Data: 3.347 (3.347)	Loss: 5.8789 (5.8789)
+Epoch: [17][200/265]	Time: 0.159 (0.187)	Data: 0.000 (0.033)	Loss: 0.6135 (0.8129)
+###### Epoch [17] ###### 
+Time: 48.420 s
+Clustering loss: 35883.957 
+ConvNet loss: 0.747
+NMI against previous assignment: 0.851
+####################### 
+
+Compute features
+0 / 265	Time: 3.351 (3.351)
+200 / 265	Time: 0.096 (0.214)
+Cluster the features
+k-means loss evolution: [73969.32  41638.934 38745.883 37968.992 37595.46  37445.242 37307.746
+ 37203.6   37148.688 37058.53  36983.867 36937.074 36916.844 36880.938
+ 36854.27  36794.69  36772.27  36728.918 36717.395 36708.76 ]
+k-means time: 48 s
+Assign pseudo labels
+Epoch: [18][0/265]	Time: 3.228 (3.228)	Data: 3.187 (3.187)	Loss: 6.2395 (6.2395)
+Epoch: [18][200/265]	Time: 0.156 (0.185)	Data: 0.000 (0.033)	Loss: 0.6144 (0.8090)
+###### Epoch [18] ###### 
+Time: 48.397 s
+Clustering loss: 36708.762 
+ConvNet loss: 0.745
+NMI against previous assignment: 0.841
+####################### 
+
+Compute features
+0 / 265	Time: 3.847 (3.847)
+200 / 265	Time: 0.099 (0.209)
+Cluster the features
+k-means loss evolution: [74553.8   42306.105 38886.758 37828.39  37405.29  37199.93  37017.426
+ 36899.39  36775.22  36631.637 36502.477 36446.855 36388.137 36344.414
+ 36284.004 36264.742 36246.76  36229.84  36207.996 36187.12 ]
+k-means time: 48 s
+Assign pseudo labels
+Epoch: [19][0/265]	Time: 2.357 (2.357)	Data: 2.318 (2.318)	Loss: 6.0910 (6.0910)
+Epoch: [19][200/265]	Time: 0.192 (0.182)	Data: 0.000 (0.027)	Loss: 0.6181 (0.7747)
+###### Epoch [19] ###### 
+Time: 47.677 s
+Clustering loss: 36187.121 
+ConvNet loss: 0.715
+NMI against previous assignment: 0.840
+####################### 
+
+Compute features
+0 / 265	Time: 2.634 (2.634)
+200 / 265	Time: 0.098 (0.211)
+Cluster the features
+k-means loss evolution: [74378.97  41627.875 38598.996 37689.035 37199.51  36934.145 36819.543
+ 36695.906 36602.59  36509.95  36402.22  36363.03  36340.37  36303.254
+ 36261.453 36252.42  36240.855 36239.27  36237.754 36237.293]
+k-means time: 48 s
+Assign pseudo labels
+Epoch: [20][0/265]	Time: 3.374 (3.374)	Data: 3.333 (3.333)	Loss: 6.2425 (6.2425)
+Epoch: [20][200/265]	Time: 0.157 (0.185)	Data: 0.000 (0.032)	Loss: 0.5362 (0.7336)
+###### Epoch [20] ###### 
+Time: 47.997 s
+Clustering loss: 36237.293 
+ConvNet loss: 0.676
+NMI against previous assignment: 0.850
+####################### 
+
+Compute features
+0 / 265	Time: 2.636 (2.636)
+200 / 265	Time: 0.069 (0.216)
+Cluster the features
+k-means loss evolution: [74117.61  42117.207 39287.72  38128.457 37599.21  37294.555 37137.88
+ 37011.508 36962.336 36926.855 36899.13  36864.285 36847.133 36831.19
+ 36820.758 36814.645 36812.04  36810.94  36810.785 36809.938]
+k-means time: 49 s
+Assign pseudo labels
+Epoch: [21][0/265]	Time: 3.317 (3.317)	Data: 3.277 (3.277)	Loss: 6.0892 (6.0892)
+Epoch: [21][200/265]	Time: 0.157 (0.186)	Data: 0.001 (0.031)	Loss: 0.5344 (0.7625)
+###### Epoch [21] ###### 
+Time: 47.874 s
+Clustering loss: 36809.938 
+ConvNet loss: 0.699
+NMI against previous assignment: 0.842
+####################### 
+
+Compute features

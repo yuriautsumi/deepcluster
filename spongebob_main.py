@@ -24,12 +24,13 @@ import torchvision.datasets as datasets
 import clustering
 import models
 from util import AverageMeter, Logger, UnifLabelSampler
-
+from cartoon_dataset import CartoonDataset
 
 def parse_args():
     parser = argparse.ArgumentParser(description='PyTorch Implementation of DeepCluster')
 
     parser.add_argument('data', metavar='DIR', help='path to dataset')
+    parser.add_argument('--path_file', metavar='PATH_FILE', help='path to file')
     parser.add_argument('--arch', '-a', type=str, metavar='ARCH',
                         choices=['alexnet', 'vgg16'], default='alexnet',
                         help='CNN architecture (default: alexnet)')
@@ -126,7 +127,8 @@ def main(args):
 
     # load the data
     end = time.time()
-    dataset = datasets.ImageFolder(args.data, transform=transforms.Compose(tra))
+    dataset = CartoonDataset(args.data, args.path_file, transform=transforms.Compose(tra))
+    #dataset = datasets.ImageFolder(args.data, transform=transforms.Compose(tra))
     if args.verbose:
         print('Load dataset: {0:.2f} s'.format(time.time() - end))
 
@@ -299,7 +301,9 @@ def compute_features(dataloader, model, N):
     end = time.time()
     model.eval()
     # discard the label information in the dataloader
-    for i, (input_tensor, _) in enumerate(dataloader):
+    for i, input_dict in enumerate(dataloader):
+        input_tensor = input_dict['image']
+        # frame_number = input_dict['frame_num']
         input_var = torch.autograd.Variable(input_tensor.cuda(), volatile=True)
         aux = model(input_var).data.cpu().numpy()
 

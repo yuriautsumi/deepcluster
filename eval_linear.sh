@@ -6,12 +6,16 @@
 #
 #!/bin/bash
 
-DATA="/datasets01/imagenet_full_size/061417/"
-MODELROOT="${HOME}/deepcluster_models"
-MODEL="${MODELROOT}/alexnet/checkpoint.pth.tar"
+DATA="/home/yuria_utsumi/deepcluster/tiny-imagenet-200/"
+#DATA="/datasets01/imagenet_full_size/061417/"
+MODELROOT="/home/yuria_utsumi/deepcluster/results/checkpoints/"
+#MODELROOT="${HOME}/deepcluster_models"
+MODEL="${MODELROOT}/checkpoint_0.0.pth.tar"
+#MODEL="${MODELROOT}/alexnet/checkpoint.pth.tar"
 EXP="${HOME}/deepcluster_exp/linear_classif"
 
-PYTHON="${HOME}/test/conda/bin/python"
+PYTHON="/home/yuria_utsumi/miniconda3/bin/python"
+#PYTHON="${HOME}/test/conda/bin/python"
 
 mkdir -p ${EXP}
 
