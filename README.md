@@ -1,5 +1,21 @@
 # Deep Clustering for Unsupervised Learning of Visual Features
 
+## How to run code
+
+Install dependencies by running:
+```
+./setup.sh
+```
+
+Edit paths in `./spongebob_main.sh`. Download `training_data.zip` from Google Drive, unzip, and save to directory. Run training by running:
+```
+./spongebob_main.sh
+```
+
+
+
+
+
 ## News
 Our new unsupervised feature learning paper was accepted (oral) at ICCV 2019 in Seoul.
 We show that unsupervised learning can be used to pre-train convnets, leading to a boost in performance on ImageNet classification.
