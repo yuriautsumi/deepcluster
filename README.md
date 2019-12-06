@@ -7,11 +7,27 @@ Install dependencies by running:
 ./setup.sh
 ```
 
-Edit paths in `./spongebob_main.sh`. Download `training_data.zip` from Google Drive, unzip, and save to directory. Run training by running:
+Download `data.zip` from Dropbox, unzip, and save to directory. Also download and save `train.txt` to `~/data`. Run training with bash script: 
+
 ```
-./spongebob_main.sh
+./main_base.sh {DIR} {LABELS} {K} {EXPERIMENT} {WT_TIME} 
 ```
 
+`DIR`: one directory up from `data` 
+
+`LABELS`: `True` if labels are provided (e.g. toy dataset), `False` otherwise 
+
+`K`: parameter in `K`-means clustering
+
+`EXPERIMENT`: `baseline` or `trivial_time`
+
+`WT_TIME`: time weighting (used only if `EXPERIMENT` is `trivial_time`)  
+
+An example is the following: 
+
+```
+./main_base.sh /home/jingweim/deepcluster/toy_dataset_v2 True 5 trivial_time 1.0 
+```
 
 
 
