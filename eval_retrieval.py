@@ -18,8 +18,10 @@ from PIL import Image
 import torch
 import torchvision
 from torch.autograd import Variable
+import torchvision.transforms as transforms
 
 from util import load_model
+from cartoon_dataset import CartoonDataset
 
 
 class ImageHelper:
@@ -151,26 +153,27 @@ class Dataset:
         self.eval_binary_path = eval_binary_path
         # Some images from the Paris dataset are corrupted. Standard practice is
         # to ignore them
-        self.blacklisted = set(["paris_louvre_000136",
-                            "paris_louvre_000146",
-                            "paris_moulinrouge_000422",
-                            "paris_museedorsay_001059",
-                            "paris_notredame_000188",
-                            "paris_pantheon_000284",
-                            "paris_pantheon_000960",
-                            "paris_pantheon_000974",
-                            "paris_pompidou_000195",
-                            "paris_pompidou_000196",
-                            "paris_pompidou_000201",
-                            "paris_pompidou_000467",
-                            "paris_pompidou_000640",
-                            "paris_sacrecoeur_000299",
-                            "paris_sacrecoeur_000330",
-                            "paris_sacrecoeur_000353",
-                            "paris_triomphe_000662",
-                            "paris_triomphe_000833",
-                            "paris_triomphe_000863",
-                            "paris_triomphe_000867"])
+        self.blacklisted = set([])
+        # self.blacklisted = set(["paris_louvre_000136",
+        #                     "paris_louvre_000146",
+        #                     "paris_moulinrouge_000422",
+        #                     "paris_museedorsay_001059",
+        #                     "paris_notredame_000188",
+        #                     "paris_pantheon_000284",
+        #                     "paris_pantheon_000960",
+        #                     "paris_pantheon_000974",
+        #                     "paris_pompidou_000195",
+        #                     "paris_pompidou_000196",
+        #                     "paris_pompidou_000201",
+        #                     "paris_pompidou_000467",
+        #                     "paris_pompidou_000640",
+        #                     "paris_sacrecoeur_000299",
+        #                     "paris_sacrecoeur_000330",
+        #                     "paris_sacrecoeur_000353",
+        #                     "paris_triomphe_000662",
+        #                     "paris_triomphe_000833",
+        #                     "paris_triomphe_000863",
+        #                     "paris_triomphe_000867"])
         self.load()
 
     def load(self):
@@ -332,8 +335,17 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Load the dataset and the image helper
-    print "Prepare the dataset from ", args.dataset
-    dataset = Dataset(args.dataset, args.eval_binary)
+    # print "Prepare the dataset from ", args.dataset
+    # dataset = Dataset(args.dataset, args.eval_binary)
+    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
+                                     std=[0.229, 0.224, 0.225])
+    tra = [transforms.Resize(256),
+           transforms.CenterCrop(224),
+           transforms.ToTensor(),
+           normalize]
+    dataset = CartoonDataset("/home/yuria_utsumi/deepcluster/training_data/", \
+                             "/home/yuria_utsumi/deepcluster/training_data/train.txt", \
+                             transform=transforms.Compose(tra))
 
     ensure_directory_exists(args.temp_dir + '/')
 
@@ -365,117 +377,123 @@ if __name__ == '__main__':
         image_helper = ImageHelper(args.S, args.L, transforms)
 
 
-    if args.stage == 'extract_train':
-        print("extract regions for training")
-        # extract at a single scale
-        S = args.S
-        image_helper.S = S
-        N_dataset = dataset.N_images
-        def process_image(i):
-            print(i),
-            sys.stdout.flush()
-            fname_out = "{0}/{1}_S{2}_L{3}_regions/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
+    """
+    XXX Don't need XXX
+    Saves regions of the image for training 
+    """
+    # if args.stage == 'extract_train':
+    #     print("extract regions for training")
+    #     # extract at a single scale
+    #     S = args.S
+    #     image_helper.S = S
+    #     # N_dataset = dataset.N_images
+    #     N_dataset = len(dataset)
+    #     def process_image(i):
+    #         print(i),
+    #         sys.stdout.flush()
+    #         fname_out = "{0}/{1}_S{2}_L{3}_regions/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
 
-            ensure_directory_exists(fname_out)
-            I = image_helper.load_and_prepare_image(dataset.get_filename(i), roi=None)
-            v = torch.autograd.Variable(I.unsqueeze(0))
-            vc = v.cuda()
-            if hasattr(net, 'sobel') and net.sobel is not None:
-                vc = net.sobel(vc)
-            activation_map = net.features(vc).cpu()
+    #         ensure_directory_exists(fname_out)
+    #         I = image_helper.load_and_prepare_image(dataset.get_filename(i), roi=None)
+    #         v = torch.autograd.Variable(I.unsqueeze(0))
+    #         vc = v.cuda()
+    #         if hasattr(net, 'sobel') and net.sobel is not None:
+    #             vc = net.sobel(vc)
+    #         activation_map = net.features(vc).cpu()
 
-            rmac_descriptors = rmac(activation_map, args.L)
-            np.save(fname_out, rmac_descriptors.data.numpy())
+    #         rmac_descriptors = rmac(activation_map, args.L)
+    #         np.save(fname_out, rmac_descriptors.data.numpy())
 
-        map(process_image, range(dataset.N_images))
+    #     map(process_image, range(len(dataset)))
+    #     # map(process_image, range(dataset.N_images))
 
-    elif args.stage == 'train_pca':
-        # load training vectors
-        train_x = []
-        for i in range(10000):
-            fname_in = "{0}/{1}_S{2}_L{3}_regions/{4}.npy".format(args.temp_dir, args.dataset_name, args.S, args.L, i)
-            if not os.path.exists(fname_in):
-                break
-            x = np.load(fname_in)
-            train_x.append(x)
+    # elif args.stage == 'train_pca':
+    #     # load training vectors
+    #     train_x = []
+    #     for i in range(10000):
+    #         fname_in = "{0}/{1}_S{2}_L{3}_regions/{4}.npy".format(args.temp_dir, args.dataset_name, args.S, args.L, i)
+    #         if not os.path.exists(fname_in):
+    #             break
+    #         x = np.load(fname_in)
+    #         train_x.append(x)
 
-        print("loaded %d train vectors" % len(train_x))
+    #     print("loaded %d train vectors" % len(train_x))
 
-        train_x = np.vstack([x.reshape(-1, x.shape[-1]) for x in train_x])
-        print("   size", train_x.shape)
+    #     train_x = np.vstack([x.reshape(-1, x.shape[-1]) for x in train_x])
+    #     print("   size", train_x.shape)
 
-        pca = PCA(args.n_pca)
-        pca.fit(train_x)
-        pcaname = '%s/%s_S%d_PCA.pickle' % (args.temp_dir, args.dataset_name, args.S)
+    #     pca = PCA(args.n_pca)
+    #     pca.fit(train_x)
+    #     pcaname = '%s/%s_S%d_PCA.pickle' % (args.temp_dir, args.dataset_name, args.S)
 
-        print("writing", pcaname)
-        pickle.dump(pca, open(pcaname, 'w'), -1)
+    #     print("writing", pcaname)
+    #     pickle.dump(pca, open(pcaname, 'w'), -1)
 
-    elif args.stage == 'db_features' or args.stage == 'q_features':
-        # for tests on Paris, use Oxford PCA, and vice-versa
-        pcaname = '%s/%s_S%d_PCA.pickle' % (
-            args.temp_dir, 'Paris' if args.dataset_name == 'Oxford' else 'Oxford', args.S)
-        print("loading PCA from", pcaname)
-        pca = pickle.load(open(pcaname, 'r'))
+    # elif args.stage == 'db_features' or args.stage == 'q_features':
+    #     # for tests on Paris, use Oxford PCA, and vice-versa
+    #     pcaname = '%s/%s_S%d_PCA.pickle' % (
+    #         args.temp_dir, 'Paris' if args.dataset_name == 'Oxford' else 'Oxford', args.S)
+    #     print("loading PCA from", pcaname)
+    #     pca = pickle.load(open(pcaname, 'r'))
 
-        print("Compute features")
-        # extract at a single scale
-        S = args.S
-        image_helper.S = S
-        N_dataset = dataset.N_images
+    #     print("Compute features")
+    #     # extract at a single scale
+    #     S = args.S
+    #     image_helper.S = S
+    #     N_dataset = dataset.N_images
 
-        def process_image(fname_in, roi, fname_out):
-            softmax = torch.nn.Softmax().cuda()
-            I = image_helper.load_and_prepare_image(fname_in, roi=roi)
-            v = torch.autograd.Variable(I.unsqueeze(0))
-            vc = v.cuda()
-            if hasattr(net, 'sobel') and net.sobel is not None:
-                vc = net.sobel(vc)
-            activation_map = net.features(vc).cpu()
-            descriptors = rmac(activation_map, args.L, pca=pca)
-            np.save(fname_out, descriptors.data.numpy())
+    #     def process_image(fname_in, roi, fname_out):
+    #         softmax = torch.nn.Softmax().cuda()
+    #         I = image_helper.load_and_prepare_image(fname_in, roi=roi)
+    #         v = torch.autograd.Variable(I.unsqueeze(0))
+    #         vc = v.cuda()
+    #         if hasattr(net, 'sobel') and net.sobel is not None:
+    #             vc = net.sobel(vc)
+    #         activation_map = net.features(vc).cpu()
+    #         descriptors = rmac(activation_map, args.L, pca=pca)
+    #         np.save(fname_out, descriptors.data.numpy())
 
-        if args.stage == 'db_features':
-            for i in range(dataset.N_images):
-                fname_in = dataset.get_filename(i)
-                fname_out = "{0}/{1}_S{2}_L{3}_db/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
-                ensure_directory_exists(fname_out)
-                print(i),
-                sys.stdout.flush()
-                process_image(fname_in, None, fname_out)
+    #     if args.stage == 'db_features':
+    #         for i in range(dataset.N_images):
+    #             fname_in = dataset.get_filename(i)
+    #             fname_out = "{0}/{1}_S{2}_L{3}_db/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
+    #             ensure_directory_exists(fname_out)
+    #             print(i),
+    #             sys.stdout.flush()
+    #             process_image(fname_in, None, fname_out)
 
-        elif args.stage == 'q_features':
-            for i in range(dataset.N_queries):
-                fname_in = dataset.get_query_filename(i)
-                roi = dataset.get_query_roi(i)
-                fname_out = "{0}/{1}_S{2}_L{3}_q/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
-                ensure_directory_exists(fname_out)
-                print(i),
-                sys.stdout.flush()
-                process_image(fname_in, roi, fname_out)
+    #     elif args.stage == 'q_features':
+    #         for i in range(dataset.N_queries):
+    #             fname_in = dataset.get_query_filename(i)
+    #             roi = dataset.get_query_roi(i)
+    #             fname_out = "{0}/{1}_S{2}_L{3}_q/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
+    #             ensure_directory_exists(fname_out)
+    #             print(i),
+    #             sys.stdout.flush()
+    #             process_image(fname_in, roi, fname_out)
 
-    elif args.stage == 'eval':
-        S = args.S
+    # elif args.stage == 'eval':
+    #     S = args.S
 
-        print("load query features")
-        features_queries = []
-        for i in range(dataset.N_queries):
-            fname = "{0}/{1}_S{2}_L{3}_q/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
-            features_queries.append(np.load(fname))
-        features_queries = np.vstack(features_queries)
+    #     print("load query features")
+    #     features_queries = []
+    #     for i in range(dataset.N_queries):
+    #         fname = "{0}/{1}_S{2}_L{3}_q/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
+    #         features_queries.append(np.load(fname))
+    #     features_queries = np.vstack(features_queries)
 
-        print("  size", features_queries.shape)
+    #     print("  size", features_queries.shape)
 
-        print("load database features")
-        features_dataset = []
-        for i in range(dataset.N_images):
-            fname = "{0}/{1}_S{2}_L{3}_db/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
-            features_dataset.append(np.load(fname))
-        features_dataset = np.vstack(features_dataset)
-        print("  size", features_dataset.shape)
+    #     print("load database features")
+    #     features_dataset = []
+    #     for i in range(dataset.N_images):
+    #         fname = "{0}/{1}_S{2}_L{3}_db/{4}.npy".format(args.temp_dir, args.dataset_name, S, args.L, i)
+    #         features_dataset.append(np.load(fname))
+    #     features_dataset = np.vstack(features_dataset)
+    #     print("  size", features_dataset.shape)
 
-        # Compute similarity
-        sim = features_queries.dot(features_dataset.T)
+    #     # Compute similarity
+    #     sim = features_queries.dot(features_dataset.T)
 
-        # Score
-        dataset.score(sim, args.temp_dir, args.eval_binary)
+    #     # Score
+    #     dataset.score(sim, args.temp_dir, args.eval_binary)

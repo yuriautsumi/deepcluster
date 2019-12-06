@@ -30,7 +30,10 @@ class CartoonDataset(Dataset):
                         image = self.transform(image)
                 path_parts = img_name.split('/')
                 video_num = self.videos.index(path_parts[-3])
-                shot_num = int(path_parts[-2].split('shot_')[-1])
+#                shot_num = int(path_parts[-2].split('shot_')[-1])
+                shot_num = int(path_parts[-2].split('_')[1])
+                scene_num = int(path_parts[-2].split('_')[-1].split('scene')[-1])
                 frame_num = int(path_parts[-1].split('.')[0])
-                sample = {'image': image, 'video_num': video_num, 'shot_num': shot_num, 'frame_num': frame_num}
+#                sample = {'image': image, 'video_num': video_num, 'shot_num': shot_num, 'frame_num': frame_num}
+                sample = {'image': image, 'video_num': video_num, 'shot_num': shot_num, 'frame_num': frame_num, 'scene_num': scene_num}
                 return sample
